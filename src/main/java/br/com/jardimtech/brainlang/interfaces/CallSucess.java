@@ -1,7 +1,6 @@
 package br.com.jardimtech.brainlang.interfaces;
 
-public interface Call {
+public interface CallSucess {
 	
 	void call();
-	
 }

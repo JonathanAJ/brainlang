@@ -2,7 +2,9 @@ package br.com.jardimtech.brainlang.dsl;
 
 import java.util.logging.Logger;
 
-import br.com.jardimtech.brainlang.interfaces.Call;
+import br.com.jardimtech.brainlang.bridge.DeviceBCI;
+import br.com.jardimtech.brainlang.interfaces.CallError;
+import br.com.jardimtech.brainlang.interfaces.CallSucess;
 
 public final class BCI {
 	
@@ -10,7 +12,7 @@ public final class BCI {
 		
 	}
 	
-	public static ConnectType connect() {
+	public static ConnectType connect(DeviceBCI deviceBCI) {
 		return new ConnectType();
 	}
 	
@@ -51,12 +53,12 @@ public final class BCI {
 	
 	public static final class Response {
 		
-		public Response done(Call call) {
+		public Response done(CallSucess call) {
 			System.out.println("done!");
 			return this;
 		}
 		
-		public Response failed(Call call) {
+		public Response failed(CallError call) {
 			System.out.println("failed!");
 			return this;
 		}
@@ -82,6 +84,12 @@ public final class BCI {
 
 		public void initialize(Response response) {
 		}
+	}
+	
+	// training
+	
+	public static TrainingBCI training() {
+		return new TrainingBCI();
 	}
 	
 	
